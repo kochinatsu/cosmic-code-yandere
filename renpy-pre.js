@@ -39,7 +39,8 @@ Module.preRun = Module.preRun || [ ];
     let statusProgress = document.getElementById("statusProgress");
 
     // Presplash block
-    let presplash = document.getElementById('presplash');
+    var p = document.getElementById('presplash');
+    if (p) { p.remove(); }
 
     // The timeout before the status div hides itself.
     let statusTimeout = null;
