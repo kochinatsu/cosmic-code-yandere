@@ -38,9 +38,6 @@ Module.preRun = Module.preRun || [ ];
     let statusTextDiv = document.getElementById("statusTextDiv");
     let statusProgress = document.getElementById("statusProgress");
 
-    // Presplash block
-    var p = document.getElementById('presplash');
-    if (p) { p.remove(); }
 
     // The timeout before the status div hides itself.
     let statusTimeout = null;
@@ -266,12 +263,17 @@ Module.preRun = Module.preRun || [ ];
     canvas.addEventListener('click', function (e) { window.focus() });
 
     Module.canvas = canvas;
-
-    window.presplashEnd = () => {
-        presplash.remove();
-        cancelStatusTimeout();
-        hideStatus();
-    };
+    
+window.presplashEnd = () => {
+    try {
+        let presplash = document.getElementById('presplash');
+        if (presplash) {
+            presplash.remove();
+        }
+    } catch(e) {}
+    cancelStatusTimeout();
+    hideStatus();
+};
 
     window.atExit = () => {
         canvas.remove();
