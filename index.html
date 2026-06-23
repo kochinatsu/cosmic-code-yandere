@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en-us">
-
+<script>
+  // اگر بازی توی iframe اجرا بشه، این متغیر رو true کن
+  if (window.top !== window.self) {
+    // یعنی توی iframe هستیم
+    window.skipIntro = true;
+  }
+  
+  // یا با پارامتر URL
+  if (window.location.search.includes('skip_intro=true')) {
+    window.skipIntro = true;
+  }
+</script>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

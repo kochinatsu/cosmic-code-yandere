@@ -28,6 +28,11 @@ Module = window.Module || { };
 Module.preRun = Module.preRun || [ ];
 
 (function () {
+    // چک کن که آیا توی iframe هستیم یا نه
+if (window.top !== window.self || window.location.search.includes('skip_intro=true')) {
+    window.skipIntro = true;
+    console.log('skip_intro enabled for iframe');
+}
 
     /***************************************************************************
      * Report messages, errors, and progress.
